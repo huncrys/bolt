@@ -39,7 +39,7 @@
     <div class="block-slot">
         {% set blockfieldvals = context.content.get(contentkey) %}
         {% for blockname,block in field.fields %}
-            <script type="text/template" data-block-type="{{ blockname }}" class="hidden">
+            <script type="text/template" data-block-type="{{ blockname }}" data-block-conversions="{{ block.conversions|json_encode }}" class="hidden">
                 {% set index = '#' %}
                 {{ include('@bolt/editcontent/fields/_block-group.twig', {'content': blockfieldvals.getEmptySet, 'index': index, 'block': blockname}) }}
             </script>
@@ -56,7 +56,7 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            {% for blockname, block in field.fields %}
+            {% for blockname, block in field.fields if not block.hidden %}
                 {% if block.group is defined %}
                     {% if not loop.first %}
                         <li class="divider"></li>

@@ -60,6 +60,11 @@
              */
             this._templates = self.element.find('script[type="text/template"]');
 
+            this._conversions = {};
+
+            $.each(self._templates, function (index, templateItem) {
+                self._conversions[$(templateItem).data('block-type')] = $(templateItem).data('block-conversions');
+            });
 
             self._ui.add.on('click', function (el) {
                 self._append(el);
@@ -126,6 +131,56 @@
                 $container.find('.repeater-collapse').removeClass('collapsed');
 
                 setToShow.slideDown();
+            });
+
+            self.element.on('click', '.convert', function () {
+                var $oldBlock = $(this).closest('.block-group');
+                var fromType = $oldBlock.children('input[type=hidden][name$=__internal\\]]').first().attr('name')
+                    .match(/blocks\[\d+\]\[(.*)\]\[__internal\]/)[1];
+                var toType = $oldBlock.find('.convert-type').val();
+                if (!fromType || !toType || !self._conversions[fromType] || !self._conversions[fromType][toType]) {
+                    return;
+                }
+
+                var newTemplate;
+                $.each(self._templates, function (index, templateItem) {
+                    var $templateItem = $(templateItem);
+                    if ($templateItem.data('block-type') === toType) {
+                        newTemplate = $templateItem.html();
+                    }
+                });
+
+                var $newBlock = $(newTemplate).clone();
+
+                // Replace all id's and corresponding for-attributes.
+                $newBlock.find('[id]').each(function () {
+                    var id = $(this).attr('id'),
+                        nid = bolt.app.buid();
+
+                    $(this).attr('id', nid);
+
+                    $newBlock.find('[for="' + id + '"]').each(function () {
+                        $(this).attr('for', nid);
+                    });
+                });
+
+                $newBlock.data('block-type', toType);
+
+                // Move values from oldInput to newInput according to the conversion
+                $.each(self._conversions[fromType][toType], function (fromName, toName) {
+                    var $oldInput = $oldBlock.find(":input[name$='\\[" + fromName + "\\]']");
+                    var $newInput = $newBlock.find(":input[name$='\\[" + toName + "\\]']");
+
+                    $newInput.val($oldInput.val());
+                });
+
+                bolt.app.initWidgets($newBlock);
+                $oldBlock.replaceWith($newBlock);
+                self._renumber();
+
+                bolt.datetime.init();
+                bolt.ckeditor.init();
+                init.popOvers();
             });
 
             self.element.on('keyup change', 'input[type=text]', function () {
