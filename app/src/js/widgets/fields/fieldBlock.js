@@ -79,6 +79,12 @@
                 }
             });
 
+            self.element.find('.convert-type').select2({
+                dropdownAutoWidth: true,
+                width: 'auto',
+                minimumResultsForSearch: -1
+            });
+
             self.element.on('click', '.delete-button', function () {
                 var setToDelete = $(this).closest('.block-group');
 
@@ -175,6 +181,11 @@
                 });
 
                 bolt.app.initWidgets($newBlock);
+                $newBlock.find('.convert-type').select2({
+                    dropdownAutoWidth: true,
+                    width: 'auto',
+                    minimumResultsForSearch: -1
+                });
                 $oldBlock.replaceWith($newBlock);
                 self._renumber();
 
@@ -249,6 +260,11 @@
             });
 
             bolt.app.initWidgets(cloned);
+            cloned.find('.convert-type').select2({
+                dropdownAutoWidth: true,
+                width: 'auto',
+                minimumResultsForSearch: -1
+            });
 
             return cloned;
         },
