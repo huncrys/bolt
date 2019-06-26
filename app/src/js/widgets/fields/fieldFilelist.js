@@ -39,7 +39,7 @@
              * @property {Object} list - List container
              */
             this._ui = {
-                data: fieldset.find('textarea'),
+                data: fieldset.find('textarea.hide'),
                 list: fieldset.find('.list')
             };
 
@@ -103,7 +103,16 @@
             });
 
             // For some reason "keyup" does not work with _on(), so for now…
-            $('input.title', self._ui.list).on('keyup', self._updateTitle);
+            $('textarea.title', self._ui.list)
+                .on('keyup', self._updateTitle)
+                .on('keyup paste', function () {
+                    self._serialize.call(self);
+                })
+                .css('height', '24px')
+                .autogrow({
+                    horizontal: false,
+                    vertical: true
+                });
 
             // Binds event handlers.
             self._on({
@@ -128,20 +137,31 @@
             // Remove empty list message, if there.
             $('>p', this._ui.list).remove();
 
+            var $new = $(Bolt.data(
+                this.options.isImage ? 'field.imagelist.template.item' : 'field.filelist.template.item',
+                {
+                    '%TITLE_A%':    file.path.replace(/\.[a-z0-9]+$/, ''),
+                    '%FILEPATH_E%': $('<div>').text(file.path).html(), // Escaped
+                    '%FILEPATH_A%': file.path,
+                    '%EXT_E%':      file.extension.toUpperCase(),
+                    '%PREVIEW_A%':  file.previewListUrl,
+                    '%URL_A%':      file.url,
+                }
+            ));
+
             // Append to list.
-            this._ui.list.append(
-                $(Bolt.data(
-                    this.options.isImage ? 'field.imagelist.template.item' : 'field.filelist.template.item',
-                    {
-                        '%TITLE_A%':    file.path.replace(/\.[a-z0-9]+$/, ''),
-                        '%FILEPATH_E%': $('<div>').text(file.path).html(), // Escaped
-                        '%FILEPATH_A%': file.path,
-                        '%EXT_E%':      file.extension.toUpperCase(),
-                        '%PREVIEW_A%':  file.previewListUrl,
-                        '%URL_A%':      file.url,
-                    }
-                ))
-            );
+            this._ui.list.append($new);
+
+            $('textarea.title', $new)
+                .on('keyup', this._updateTitle)
+                .on('keyup paste', function () {
+                    this._serialize.call(this);
+                })
+                .css('height', '24px')
+                .autogrow({
+                    horizontal: false,
+                    vertical: true
+                });
 
             this._serialize();
         },
@@ -237,7 +257,7 @@
             $('.item', this._ui.list).each(function () {
                 data.push({
                     filename: $('input.filename', this).val(),
-                    title: $('input.title', this).val()
+                    title: $('textarea.title', this).val()
                 });
             });
             this._ui.data.val(JSON.stringify(data));

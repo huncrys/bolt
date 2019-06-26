@@ -38,7 +38,7 @@
         <a class="magnific" href="%URL_A%" title="%TITLE_A%">
             <img src="%PREVIEW_A%" width="60" height="40">
         </a>
-        <input type="text" class="title" value="%TITLE_A%">
+        <textarea class="title">%TITLE_A%</textarea>
         <input type="hidden" class="filename" value="%FILEPATH_A%">
         <a href="#" class="remove"><i class="fa fa-times"></i></a>
         <span class="desc">%FILEPATH_E%</span>
@@ -96,7 +96,7 @@
         <div class="clearfix">
             {{ macro.upload_buttons('image', attributes.fileupload, option.upload, context.can.upload, true) }}
 
-            <textarea name="{{ name }}" class="hide">{{ list|json_encode() }}</textarea>
+            <textarea name="{{ name }}" class="hide" style="height: 24px">{{ list|json_encode() }}</textarea>
         </div>
     </div>
 {% endblock fieldset_controls %}

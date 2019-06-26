@@ -36,7 +36,7 @@
 {% set template_item %}
     <div class="item ui-state-default">
         <div class="icon"><i class="fa %ICON%"></i><span>%EXT_E%</span></div>
-        <input type="text" class="title" value="%TITLE_A%">
+        <textarea class="title">%TITLE_A%</textarea>
         <input type="hidden" class="filename" value="%FILEPATH_A%">
         <a href="#" class="remove"><i class="fa fa-times"></i></a>
         <span class="desc">%FILEPATH_E%</span>
@@ -96,6 +96,6 @@
         </div>
 
         {# Data #}
-        <textarea name="{{ name }}" class="hide">{{ list|json_encode() }}</textarea>
+        <textarea name="{{ name }}" class="hide" style="height: 24px">{{ list|json_encode() }}</textarea>
     </div>
 {% endblock fieldset_controls %}

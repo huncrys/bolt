@@ -87,6 +87,7 @@ module.exports = function (grunt, option) {
                 '<%= path.tmp %>/jquery.formatDateTime.min.js',                 //   3 kb
                 '<%= path.tmp %>/jquery.tagcloud.min.js',                       //   2 kb
                 '<%= path.src.npm %>/complexify/jquery.complexify.min.js',      //   2 kb
+                '<%= path.src.npm %>/jquery.ns-autogrow/dist/jquery.ns-autogrow.min.js', // 3kb
                 '<%= path.tmp %>/bootbox.min.js',                               //  10 kb
                 '<%= path.tmp %>/jquery.magnific-popup.min.js',                 //  21 kb
                 '<%= path.src.lib %>/jquery-ui-1.12.1.custom/jquery-ui.min.js', //  88 kb

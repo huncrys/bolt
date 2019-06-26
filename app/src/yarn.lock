@@ -2536,6 +2536,18 @@ jquery.cookie@~1.4.1:
   resolved "https://registry.yarnpkg.com/jquery.cookie/-/jquery.cookie-1.4.1.tgz#d63dce209eab691fe63316db08ca9e47e0f9385b"
   integrity sha1-1j3OIJ6raR/mMxbbCMqeR+D5OFs=
 
+jquery.ns-autogrow@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/jquery.ns-autogrow/-/jquery.ns-autogrow-1.1.6.tgz#46e6815a7cf63e141409498f914265f5e4350c86"
+  integrity sha1-RuaBWnz2PhQUCUmPkUJl9eQ1DIY=
+  dependencies:
+    jquery "^1.12.4"
+
+jquery@^1.12.4:
+  version "1.12.4"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-1.12.4.tgz#01e1dfba290fe73deba77ceeacb0f9ba2fec9e0c"
+  integrity sha1-AeHfuikP5z3rp3zurLD5ui/sngw=
+
 jquery@~2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
