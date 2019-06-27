@@ -16,6 +16,9 @@
         {# Dashboard #}
         {{ nav.link('fa:dashboard', __('general.phrase.dashboard'), 'dashboard', (page_nav == 'Dashboard')) }}
 
+        {# Documentation #}
+        {{ nav.link('fa:info', __('general.phrase.documentation'), 'documentation', (page_nav == 'Documentation')) }}
+
         {# View site #}
         <li class="visible-xs">
             <a href="{{ path('homepage') }}" target="_blank"><i class="icon fa fa-external-link-square"></i> {{ __('general.phrase.view-site') }}</a>

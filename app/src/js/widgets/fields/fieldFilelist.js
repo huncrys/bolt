@@ -154,9 +154,7 @@
 
             $('textarea.title', $new)
                 .on('keyup', this._updateTitle)
-                .on('keyup paste', function () {
-                    this._serialize.call(this);
-                })
+                .on('keyup paste', this._serialize.bind(this))
                 .css('height', '24px')
                 .autogrow({
                     horizontal: false,

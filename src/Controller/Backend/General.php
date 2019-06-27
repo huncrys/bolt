@@ -40,6 +40,9 @@ class General extends BackendBase
 
         $c->get('/', 'dashboard')
             ->bind('dashboard');
+        
+        $c->get('/documentation', 'documentation')
+            ->bind('documentation');
 
         $c->get('/omnisearch', 'omnisearch')
             ->bind('omnisearch-results');
@@ -133,6 +136,16 @@ class General extends BackendBase
     public function dashboard()
     {
         return $this->render('@bolt/dashboard/dashboard.twig', $this->getLatest());
+    }
+
+    /**
+     * Documentation page route.
+     *
+     * @return \Bolt\Response\TemplateResponse
+     */
+    public function documentation()
+    {
+        return $this->render('@bolt/documentation/documentation.twig');
     }
 
     /**
