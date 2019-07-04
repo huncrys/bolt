@@ -137,7 +137,7 @@ class Cron extends Event
         $nextRun = $this->jobs[$interimName]['nextRunTime'];
         if ($interimName === CronEvents::CRON_HOURLY && $this->runtime >= $nextRun) {
             return true;
-        } elseif ($this->runtime > $this->cronHour && $this->runtime >= $nextRun) {
+        } elseif ($this->runtime >= $this->cronHour && $this->runtime >= $nextRun) {
             // Only run non-hourly event jobs if we've passed our cron hour today
             return true;
         }
