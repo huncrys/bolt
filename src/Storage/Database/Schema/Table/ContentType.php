@@ -34,6 +34,7 @@ class ContentType extends BaseTable
         'textarea'       => 'columnText',
         // JSON arrays
         'filelist'       => 'columnJson',
+        'textlist'       => 'columnJson',
         'geolocation'    => 'columnJson',
         'image'          => 'columnJson',
         'imagelist'      => 'columnJson',

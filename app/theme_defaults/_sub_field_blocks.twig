@@ -81,7 +81,7 @@
 
     {# No special case defined for this type of field. We just output them, if it's
        a simple scalar, and 'dump' them otherwise. #}
-    {% if fieldtype in [ 'filelist', 'datetime', 'date', 'integer', 'float' ] and value is not empty  %}
+    {% if fieldtype in [ 'filelist', 'textlist', 'datetime', 'date', 'integer', 'float' ] and value is not empty  %}
         <p><strong>{{ key }}: </strong>
         {% if value is iterable %}
             {{ dump(value) }}

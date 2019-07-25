@@ -135,6 +135,7 @@ trait ContentValuesTrait
 
                     case 'imagelist':
                     case 'filelist':
+                    case 'textlist':
                         if (is_array($this->values[$field])) {
                             $newvalue[$field] = Json::dump($this->values[$field]);
                         } elseif (!empty($this->values[$field]) && strlen($this->values[$field]) < 3) {

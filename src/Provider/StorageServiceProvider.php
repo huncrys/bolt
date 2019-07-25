@@ -164,6 +164,7 @@ class StorageServiceProvider implements ServiceProviderInterface
             'templatefields'               => Field\Type\TemplateFieldsType::class,
             'templateselect'               => Field\Type\TemplateSelectType::class,
             'text'                         => Field\Type\TextType::class,
+            'textlist'                     => Field\Type\TextListType::class,
             'textarea'                     => Field\Type\TextAreaType::class,
             'video'                        => Field\Type\VideoType::class,
         ];

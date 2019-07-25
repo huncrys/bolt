@@ -30,10 +30,11 @@ fieldset[class^='bolt-field-'] {
     }
 }
 
-/*** Styles for all filelists/imagelists ***/
+/*** Styles for all filelists/imagelists/textlists ***/
 
 fieldset.bolt-field-filelist,
-fieldset.bolt-field-imagelist {
+fieldset.bolt-field-imagelist,
+fieldset.bolt-field-textlist {
     // Empty placeholder
     p {
         padding: 8px;
@@ -96,9 +97,15 @@ fieldset.bolt-field-imagelist {
             }
         }
 
-        input.title {
-            border: 1px solid #f0f0f0;
-            background-color:#fbfbfb;
+        textarea.title {
+            min-height: 24px;
+            resize: none!important;
+            border: 1px solid;
+            border-color: #f0f0f0!important;
+            background-color: #fbfbfb;
+            font-family: inherit!important;
+            font-size: 15px;
+            padding: 1px 0 0 5px;
         }
 
         // Remove button
@@ -142,5 +149,26 @@ fieldset.bolt-field-imagelist {
                 font-size: 85%;
             }
         }
+    }
+}
+
+fieldset.bolt-field-filelist,
+fieldset.bolt-field-imagelist {
+    .item {
+        min-height: 48px;
+    }
+
+    textarea.title {
+        width: 83% !important;
+    }
+}
+
+fieldset.bolt-field-textlist {
+    .item {
+        min-height: 36px;
+    }
+
+    textarea.title {
+        width: 90% !important;
     }
 }

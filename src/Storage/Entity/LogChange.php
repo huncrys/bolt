@@ -190,6 +190,7 @@ class LogChange extends Entity
             'markdown'    => 'fieldText',
             'textarea'    => 'fieldText',
             'filelist'    => 'fieldList',
+            'textlist'    => 'fieldList',
             'imagelist'   => 'fieldList',
             'geolocation' => 'fieldGeolocation',
             'image'       => 'fieldImage',

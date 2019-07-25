@@ -186,6 +186,25 @@
                                 </div>
                                 <div class="hidden video" id="{{ key }}">{{ field.after.render.html|raw }}</div>
                             </td>
+                        {% elseif field.type == 'textlist' %}
+                            <td class="change-log-item">
+                                {% for item in field.before.render %}
+                                    <strong>Title:</strong> {{ item.title }}
+
+                                    {% if not loop.last %}
+                                        <br><br>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td class="change-log-item">
+                                {% for item in field.after.render %}
+                                    <strong>Title:</strong> {{ item.title }}
+
+                                    {% if not loop.last %}
+                                        <br><br>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
                         {% else %}
                             <td class="change-log-item">
                                 {{ dump(field.before.render) }}

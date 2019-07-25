@@ -17,6 +17,8 @@ info:
         filelist: |
             Használja ezt a mezőt több fájl és leírás egyidejű feltöltéséhez. Ahogyan az egyedi fájl mezőnél, itt is
             behúzhat fogd és vidd módszerrel fájlokat. Esetleg tegyen egy próbát!
+        textlist: |
+            Használja ezt a mezőt több szöveges elem megadásához. Esetleg tegyen egy próbát!
         filesmall: |
             Használja a gombot fájlfeltöltéshez. Korábban feltöltött fájl kiválasztásához írja be a fájlnév legalább
             egy kis részét a mezőbe, ami aztán ki lesz egészítve.

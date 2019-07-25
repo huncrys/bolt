@@ -169,6 +169,7 @@ class Content implements \ArrayAccess
 
                 case 'imagelist':
                 case 'filelist':
+                case 'textlist':
                     if (is_string($this->values[$name])) {
                         // Parse the field as JSON, return the array
                         $value = Json::parse($this->values[$name]);

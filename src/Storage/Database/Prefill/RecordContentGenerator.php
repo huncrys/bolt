@@ -89,6 +89,7 @@ class RecordContentGenerator
         'select'         => 'addText',
         'textarea'       => 'addText',
         // JSON arrays
+        'textlist'       => 'addJson',
         'filelist'       => 'addJson',
         'geolocation'    => 'addJson',
         'image'          => 'addJson',
@@ -295,7 +296,7 @@ class RecordContentGenerator
             for ($i = 1; $i <= 3; $i++) {
                 $value[] = $this->getRandomImage($type, $placeholder);
             }
-        } elseif ($type === 'filelist' || $type === 'templatefields') {
+        } elseif ($type === 'filelist' || $type === 'textlist' || $type === 'templatefields') {
             $value = [];
         }
 
